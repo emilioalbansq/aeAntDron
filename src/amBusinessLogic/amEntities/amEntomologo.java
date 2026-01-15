@@ -8,7 +8,8 @@ import java.util.List;
 
 import amBusinessLogic.amInterfaces.IamEntomologo;
 import amBusinessLogic.amInterfaces.IamIngestaNativa;
-import amDataAccess.amDAOs.amAlimentoTipoDAO;
+import amDataAccess.amDAOs.amAlimentoDAO;
+import amDataAccess.amDAOs.amAlimentoDAO;
 import amDataAccess.amDAOs.amHormigaDAO;
 import amInfrastructure.AppConfig;
 import amInfrastructure.AppException;
@@ -22,7 +23,7 @@ public class amEntomologo implements IamEntomologo,  IamIngestaNativa{
 
     public amAlimento amPreparar(amAlimento alimento) {
         
-        if (inyectar(null))
+        if (!inyectar(null))
             System.out.println("[Preparado]-<" + alimento.getClass().getSimpleName() + ">-");
         return alimento;
     }
@@ -37,14 +38,15 @@ public class amEntomologo implements IamEntomologo,  IamIngestaNativa{
 
         try {
             List<String> lineas = Files.readAllLines(Paths.get(AppConfig.ANT_NEST_PATH));
-
+            int i = 0;
             for (String linea : lineas) {
 
                 // delimitador REAL: coma
                 String[] tokens = linea.split(",");
 
+                
                 for (String t : tokens) {
-
+                    i++;
                     String dato = t.trim();
 
                     if (dato.isEmpty()) continue;
@@ -57,7 +59,13 @@ public class amEntomologo implements IamEntomologo,  IamIngestaNativa{
                         System.out.println(CMDColor.BLUE +"   HLarva" + CMDColor.RESET);
 
                         amHormiga h = new amHLarva();
+                        
+                        h.data.setNombre("HLarva-" + i);
+                        h.data.setIdHormigaTipo(1);
+                        h.data.setIdSexo(4);
+                        h.data.setIdEstado(1);
 
+                        
                         resultado.add(h);
 
                         amHormigaDAO hormigaDAO = new amHormigaDAO();
@@ -83,24 +91,22 @@ public class amEntomologo implements IamEntomologo,  IamIngestaNativa{
         List<amAlimento> resultado = new ArrayList<>();
 
         System.out.println("[+] Alimentos");
-
+        int i =0 ;
         try {
-            List<String> lineas = Files.readAllLines(
-                Paths.get("storage/DataFiles/AntFood.txt")
-            );
+            List<String> lineas = Files.readAllLines(Paths.get(AppConfig.ANT_FOOD_PATH));
 
             for (String linea : lineas) {
-
+            
                 // delimitador REAL: guion
                 String[] tokens = linea.split("-");
 
                 for (String t : tokens) {
-
+                i++;
                     String dato = t.trim();
 
                     if (dato.isEmpty()) continue;
 
-                    CMDProgress.showSpinner();
+                    CMDProgress.showWaiting();
 
                     if (dato.equalsIgnoreCase("Nectarívoros")
                      || dato.equalsIgnoreCase("Nectarivoros")) {
@@ -109,10 +115,14 @@ public class amEntomologo implements IamEntomologo,  IamIngestaNativa{
 
                         amNectarivoro n = new amNectarivoro();
 
+                        n.data.setNombre("Nectarívoro-" + i);
+                        n.data.setIdAlimentoTipo(4);
+                        n.data.setDescripcion("Alimento para hormigas nectarívoras");
+
                         resultado.add(n);
 
-                        amAlimentoTipoDAO alimentoTipoDAO = new amAlimentoTipoDAO();
-                        alimentoTipoDAO.create(n.data);
+                        amAlimentoDAO alimentoDAO = new amAlimentoDAO();
+                        alimentoDAO.create(n.data);
 
                         resultado.add(new amNectarivoro());
 
@@ -143,8 +153,8 @@ public class amEntomologo implements IamEntomologo,  IamIngestaNativa{
         if (food instanceof amNectarivoro){
             System.out.println("Entomologo está alimentando la hormiga...");
             food.data.setEstado("x");
-            amAlimentoTipoDAO amAlimentoTipoDAO = new amAlimentoTipoDAO();
-            amAlimentoTipoDAO.update(food.data);
+            amAlimentoDAO amAlimentoDAO = new amAlimentoDAO();
+            amAlimentoDAO.update(food.data);
             return ant;
         }
         else {

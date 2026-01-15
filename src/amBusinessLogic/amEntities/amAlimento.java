@@ -1,12 +1,14 @@
 package amBusinessLogic.amEntities;
 
 import amBusinessLogic.FactoryBL;
-import amDataAccess.amDAOs.amAlimentoTipoDAO;
-import amDataAccess.amDTOs.amAlimentoTipoDTO;
+import amDataAccess.amDAOs.amAlimentoDAO;
+import amDataAccess.amDTOs.amAlimentoDTO;
+
 
 public abstract class amAlimento {
 
-    protected FactoryBL<amAlimentoTipoDTO> factory = new FactoryBL<>(amAlimentoTipoDAO.class);
-    public amAlimentoTipoDTO data = new amAlimentoTipoDTO();
+    protected FactoryBL<amAlimentoDTO> factory = new FactoryBL<>(amAlimentoDAO.class);
+    public amAlimentoDTO data = new amAlimentoDTO();
+    protected amGenoAlimento genoma;
 
 }

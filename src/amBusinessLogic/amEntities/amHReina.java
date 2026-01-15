@@ -29,7 +29,7 @@ public class amHReina extends amHormiga {
     }
 
     public void amSuperReproductora() {
-        this.data.setSuperHabilidad(true);
+        this.SuperHabilidad = true;
         System.out.println("La Hormiga Reina ha activado su super habilidad de reproducción masiva.");
     }
 }

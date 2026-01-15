@@ -22,3 +22,73 @@
 ╰──── LOG  ❱❱ 2026-01-13 22:39:55 | aeHormigaDAO.readBy | [SQLITE_ERROR] SQL error or missing database (no such column: Estado)
 ╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
 ╰──── LOG  ❱❱ 2026-01-13 22:39:55 | aeAntCiberDronDAO.readAll | [SQLITE_ERROR] SQL error or missing database (no such column: Estado)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 00:03:07 | amHormigaDAO.create | [SQLITE_ERROR] SQL error or missing database (no such table: amHormiga)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 00:04:22 | amHormigaDAO.create | [SQLITE_ERROR] SQL error or missing database (no such table: amHormiga)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 00:07:40 | amHormigaDAO.create | [SQLITE_ERROR] SQL error or missing database (table amHormiga has no column named amSuperHabilidad)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 00:09:36 | amHormigaDAO.create | [SQLITE_ERROR] SQL error or missing database (table amHormiga has no column named amSuperHabilidad)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 00:14:21 | amHormigaDAO.create | [SQLITE_CONSTRAINT_NOTNULL] A NOT NULL constraint failed (NOT NULL constraint failed: amHormiga.IdamHormigaTipo)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 00:19:47 | amHormigaDAO.create | [SQLITE_CONSTRAINT_NOTNULL] A NOT NULL constraint failed (NOT NULL constraint failed: amHormiga.IdamSexo)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 00:21:15 | amHormigaDAO.create | [SQLITE_CONSTRAINT_NOTNULL] A NOT NULL constraint failed (NOT NULL constraint failed: amHormiga.IdamEstado)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 00:22:09 | amHormigaDAO.create | [SQLITE_CONSTRAINT_NOTNULL] A NOT NULL constraint failed (NOT NULL constraint failed: amHormiga.IdamEstado)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 00:22:47 | amHormigaDAO.create | [SQLITE_CONSTRAINT_NOTNULL] A NOT NULL constraint failed (NOT NULL constraint failed: amHormiga.amNombre)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 00:23:39 | amHormigaDAO.create | [SQLITE_CONSTRAINT_NOTNULL] A NOT NULL constraint failed (NOT NULL constraint failed: amHormiga.amNombre)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 00:25:22 | amHormigaDAO.create | [SQLITE_CONSTRAINT_UNIQUE] A UNIQUE constraint failed (UNIQUE constraint failed: amHormiga.amNombre)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 00:27:58 | amHormigaDAO.create | [SQLITE_CONSTRAINT_UNIQUE] A UNIQUE constraint failed (UNIQUE constraint failed: amHormiga.amNombre)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 00:28:25 | amHormigaDAO.create | [SQLITE_CONSTRAINT_UNIQUE] A UNIQUE constraint failed (UNIQUE constraint failed: amHormiga.amNombre)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 00:30:18 | amHormigaDAO.create | [SQLITE_CONSTRAINT_UNIQUE] A UNIQUE constraint failed (UNIQUE constraint failed: amHormiga.amNombre)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 00:30:56 | amHormigaDAO.create | [SQLITE_CONSTRAINT_UNIQUE] A UNIQUE constraint failed (UNIQUE constraint failed: amHormiga.amNombre)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 00:36:39 | amAlimentoTipoDAO.create | [SQLITE_ERROR] SQL error or missing database (table amAlimentoTipo has no column named amgenoAlimento)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 00:38:14 | amAlimentoTipoDAO.create | [SQLITE_ERROR] SQL error or missing database (table amAlimentoTipo has no column named amgenoAlimento)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 00:38:43 | amAlimentoTipoDAO.create | [SQLITE_ERROR] SQL error or missing database (table amAlimentoTipo has no column named amgenoAlimento)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 00:43:46 | amAlimentoTipoDAO.create | [SQLITE_ERROR] SQL error or missing database (table amAlimentoTipo has no column named amgenoAlimento)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 00:45:35 | amAlimentoTipoDAO.create | [SQLITE_ERROR] SQL error or missing database (table amAlimentoTipo has no column named amgenoAlimento)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 00:46:57 | amAlimentoTipoDAO.create | [SQLITE_CONSTRAINT_NOTNULL] A NOT NULL constraint failed (NOT NULL constraint failed: amAlimentoTipo.amNombre)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 00:49:52 | amAlimentoTipoDAO.create | [SQLITE_CONSTRAINT_NOTNULL] A NOT NULL constraint failed (NOT NULL constraint failed: amAlimentoTipo.amNombre)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 00:58:59 | amAlimentoDAO.create | [SQLITE_ERROR] SQL error or missing database (no such table: amAlimento)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 01:00:04 | amAlimentoDAO.create | [SQLITE_ERROR] SQL error or missing database (no such table: amAlimento)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 01:02:35 | amAlimentoDAO.create | [SQLITE_CONSTRAINT_NOTNULL] A NOT NULL constraint failed (NOT NULL constraint failed: amAlimento.amNombre)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 01:04:32 | amAlimentoDAO.create | [SQLITE_CONSTRAINT_UNIQUE] A UNIQUE constraint failed (UNIQUE constraint failed: amAlimento.amNombre)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 01:11:50 | amAlimentoDAO.create | [SQLITE_CONSTRAINT_UNIQUE] A UNIQUE constraint failed (UNIQUE constraint failed: amAlimento.amNombre)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 01:13:14 | amHormigaDAO.create | [SQLITE_CONSTRAINT_UNIQUE] A UNIQUE constraint failed (UNIQUE constraint failed: amHormiga.amNombre)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 01:30:13 | amHormigaDAO.create | [SQLITE_CONSTRAINT_UNIQUE] A UNIQUE constraint failed (UNIQUE constraint failed: amHormiga.amNombre)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 01:39:49 | amHormigaDAO.create | [SQLITE_CONSTRAINT_UNIQUE] A UNIQUE constraint failed (UNIQUE constraint failed: amHormiga.amNombre)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 02:01:45 | amHormigaDAO.create | [SQLITE_CONSTRAINT_UNIQUE] A UNIQUE constraint failed (UNIQUE constraint failed: amHormiga.amNombre)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 02:07:21 | amHormigaDAO.create | [SQLITE_CONSTRAINT_UNIQUE] A UNIQUE constraint failed (UNIQUE constraint failed: amHormiga.amNombre)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 02:16:02 | amHormigaDAO.create | [SQLITE_CONSTRAINT_UNIQUE] A UNIQUE constraint failed (UNIQUE constraint failed: amHormiga.amNombre)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 02:20:06 | amHormigaDAO.create | [SQLITE_CONSTRAINT_UNIQUE] A UNIQUE constraint failed (UNIQUE constraint failed: amHormiga.amNombre)
+╭─💀─ SHOW ❱❱ Ups! Error inesperado. Por favor, contacte al administrador del sistema. 
+╰──── LOG  ❱❱ 2026-01-15 02:32:22 | amHormigaDAO.create | [SQLITE_CONSTRAINT_UNIQUE] A UNIQUE constraint failed (UNIQUE constraint failed: amHormiga.amNombre)

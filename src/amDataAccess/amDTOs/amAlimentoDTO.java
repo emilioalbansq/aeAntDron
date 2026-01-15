@@ -1,8 +1,10 @@
 package amDataAccess.amDTOs;
 
-import amBusinessLogic.amEntities.amGenoAlimento;
+public class amAlimentoDTO {
 
-public class amAlimentoTipoDTO {
+    private Integer IdamAlimento;
+    
+
     private Integer IdamAlimentoTipo;
     private String  amNombre        ;
     private String  amDescripcion   ;
@@ -12,21 +14,29 @@ public class amAlimentoTipoDTO {
     
     
     
-    public amAlimentoTipoDTO() {
+    public amAlimentoDTO() {
     }
-    public amAlimentoTipoDTO(String nombre, String descripcion) {
-        IdamAlimentoTipo  = 0;
+    public amAlimentoDTO(String nombre, String descripcion) {
+        IdamAlimento  = 0;
         amNombre          = nombre;
         amDescripcion     = descripcion;
     }
-    public amAlimentoTipoDTO(Integer idAlimentoTipo, String nombre, String descripcion, String estado, String fechaCreacion,
+    public amAlimentoDTO(Integer idAlimento, Integer idAlimentoTipo, String nombre, String descripcion, String estado, String fechaCreacion,
             String fechaModifica) {
+        IdamAlimento      = idAlimento;
         IdamAlimentoTipo  = idAlimentoTipo;
         amNombre          = nombre;
         amDescripcion     = descripcion;
         amEstado          = estado;
         amFechaCreacion   = fechaCreacion;
         amFechaModifica   = fechaModifica;
+    }
+
+    public Integer getIdAlimento() {
+        return IdamAlimento;
+    }
+    public void setIdAlimento(Integer idamAlimento) {
+        IdamAlimento = idamAlimento;
     }
     public Integer getIdAlimentoTipo() {
         return IdamAlimentoTipo;
@@ -68,6 +78,7 @@ public class amAlimentoTipoDTO {
     @Override
     public String toString() {
         return getClass().getName()
+        + "\n IdAlimento    : "+ getIdAlimento  ()
         + "\n IdAlimentoTipo: "+ getIdAlimentoTipo  ()
         + "\n Nombre        : "+ getNombre          ()
         + "\n Descripcion   : "+ getDescripcion     ()
@@ -76,4 +87,5 @@ public class amAlimentoTipoDTO {
         + "\n FechaModifica : "+ getFechaModifica   ()
         + "\n --------------------------- " ;
     }
+
 }

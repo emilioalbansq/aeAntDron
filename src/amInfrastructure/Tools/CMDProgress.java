@@ -14,21 +14,18 @@ public abstract class CMDProgress {
         for (int x =0 ; x <= 100 ; x++) {
             String srt = "\r "+ c.charAt(x % c.length()) + " " + x + " % ";
             System.out.print(srt);
-            Thread.sleep(30);
+            Thread.sleep(10);
         }
+        System.out.println(" ");
     }
 
     public static void showWaiting() throws InterruptedException{
         String[] simbolo = {".o.", "..o", ".o.", "o.."};
 
-        int pos = 0;
-
         for(int i = 0; i <= 100; i++){
-            System.out.print("\r " + simbolo[pos] + " " + i + " %");
-            Thread.sleep(30);
-            
-            if (pos == 3) pos = 0;
-            else pos++;
+            String srt = "\r " + simbolo[i % simbolo.length] + " " + i + " % ";
+            System.out.print(srt);
+            Thread.sleep(10);
         }
         System.out.println(" ");
     }

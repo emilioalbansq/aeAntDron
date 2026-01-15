@@ -11,10 +11,8 @@ public class amHormigaDTO {
     private String  amEstado        ; 
     private String  amFechaCreacion ; 
     private String  amFechaModifica ;
-    private boolean amSuperHabilidad;
 
     public amHormigaDTO() {
-        amSuperHabilidad = false;
     }
     public amHormigaDTO(Integer idHormiga, Integer idHormigaTipo, Integer idSexo, Integer idEstado, String nombre,
             String descripcion) {
@@ -24,7 +22,6 @@ public class amHormigaDTO {
         IdamEstado = idEstado;
         amNombre = nombre;
         amDescripcion = descripcion;
-        amSuperHabilidad = false;
     }
     public amHormigaDTO(Integer idHormiga, Integer idHormigaTipo, Integer idSexo, Integer idEstado, String nombre,
             String descripcion, String estado, String fechaCreacion, String fechaModifica) {
@@ -37,7 +34,6 @@ public class amHormigaDTO {
         amEstado = estado;
         amFechaCreacion = fechaCreacion;
         amFechaModifica = fechaModifica;
-        amSuperHabilidad = false;
     }
     public Integer getIdHormiga() {
         return IdamHormiga;
@@ -93,12 +89,7 @@ public class amHormigaDTO {
     public void setFechaModifica(String fechaModifica) {
         amFechaModifica = fechaModifica;
     } 
-    public boolean getSuperHabilidad() {
-        return amSuperHabilidad;
-    }
-    public void setSuperHabilidad(boolean superHabilidad) {
-        amSuperHabilidad = superHabilidad;
-    }
+    
 
     @Override
     public String toString() {
@@ -108,7 +99,6 @@ public class amHormigaDTO {
         + "\n IdSexo        : "+ getIdSexo          ()
         + "\n IdEstado      : "+ getIdEstado        ()  
         + "\n Nombre        : "+ getNombre          ()
-        + "\n SuperHabilidad: "+ ( getSuperHabilidad  ()? "Si" : "No" )
         + "\n Descripcion   : "+ getDescripcion     ()
         + "\n Estado        : "+ getEstado          ()
         + "\n FechaCreacion : "+ getFechaCreacion   ()

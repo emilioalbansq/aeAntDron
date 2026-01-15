@@ -10,10 +10,11 @@ import amBusinessLogic.amEntities.amEntomologoGenetista;
 import amBusinessLogic.amEntities.amHLarva;
 import amBusinessLogic.amEntities.amHormiga;
 import amBusinessLogic.amEntities.amNectarivoro;
-import amDataAccess.amDAOs.amAlimentoTipoDAO;
+import amBusinessLogic.amEntities.amX;
+import amDataAccess.amDAOs.amAlimentoDAO;
 import amDataAccess.amDAOs.amAntCiberDronDAO;
 import amDataAccess.amDAOs.amHormigaDAO;
-import amDataAccess.amDTOs.amAlimentoTipoDTO;
+import amDataAccess.amDTOs.amAlimentoDTO;
 import amDataAccess.amDTOs.amAntCiberDronDTO;
 import amDataAccess.amDTOs.amHormigaDTO;
 import amInfrastructure.AppException;
@@ -30,8 +31,9 @@ public class App {
         for (int intento = 1; intento <= maxIntentos; intento++) {
             if (autenticar(sc, "patmic", "123")) {
                 System.out.println("Acceso concedido.");
-                sc.close();
-                return;
+                System.out.println("Nombres: Ariel Montufar, Emilio Alban");
+                System.out.println("C.I: 1729372274,1751257088 ");
+                break;
             } else {
                 int restantes = maxIntentos - intento;
                 if (restantes > 0) {
@@ -46,7 +48,7 @@ public class App {
         // DAOs
         // =============================
         amHormigaDAO hormigaDAO = new amHormigaDAO();
-        amAlimentoTipoDAO alimentoDAO = new amAlimentoTipoDAO();
+        amAlimentoDAO alimentoDAO = new amAlimentoDAO();
 
         // =============================
         // BL
@@ -61,6 +63,7 @@ public class App {
         int opcion;
         do {
             mostrarMenu();
+            
             opcion = CMDInput.getNumeroPositivo("", "Por favor ingrese un número válido.");
 
             switch (opcion) {
@@ -82,17 +85,16 @@ public class App {
 
                         // Traer datos desde BD
                         List<amHormigaDTO> hormigasDTO = hormigaDAO.readAll();
-                        List<amAlimentoTipoDTO> alimentosDTO = alimentoDAO.readAll();
+                        List<amAlimentoDTO> alimentosDTO = alimentoDAO.readAll();
 
                         for (amHormigaDTO hDTO : hormigasDTO) {
                         
                             
                         
                             // Buscar alimento Nectarívoro
-                            amAlimentoTipoDTO alimentoDTO = null;
-                            for (amAlimentoTipoDTO aDTO : alimentosDTO) {
-                                if ("Nectarivoro".equalsIgnoreCase(aDTO.getNombre())
-                                 || "Nectarívoro".equalsIgnoreCase(aDTO.getNombre())) {
+                            amAlimentoDTO alimentoDTO = null;
+                            for (amAlimentoDTO aDTO : alimentosDTO) {
+                                if (aDTO.getIdAlimentoTipo() == 4) {
                                     alimentoDTO = aDTO;
                                     break;
                                 }
@@ -116,11 +118,12 @@ public class App {
                             // El alimento ya fue consumido
                             alimentosDTO.remove(alimentoDTO);
                         
-                            System.out.println("✓ Hormiga alimentada");
+                            System.out.println(hormiga.data.getNombre() + " alimentada");
                         }
                     
                     } catch (Exception e) {
                         System.err.println("Error al alimentar hormigas");
+                        e.printStackTrace();
                     } finally {
                         System.out.println("..."); }
                     
@@ -128,33 +131,49 @@ public class App {
 
                 case 4 -> {
                     try {
-                        
+                        System.out.println("[ INYECTAR GENOMAS Y ALIMENTAR HORMIGAS ]");
                         // Traer alimentos desde BD
-                        List<amAlimentoTipoDTO> alimentosDTO = alimentoDAO.readAll();
+                        List<amHormigaDTO> hormigasDTO = hormigaDAO.readAll();
+                        List<amAlimentoDTO> alimentosDTO = alimentoDAO.readAll();
+                                        
+                        amAlimento alimentoValido = null;
+                                        
+                        for (amAlimentoDTO aDTO : alimentosDTO) {
+                            if (aDTO.getIdAlimentoTipo() == 4) {
+                            
+                                amNectarivoro n = new amNectarivoro();
+                                n.data = aDTO;
 
-                        for (amAlimentoTipoDTO aDTO : alimentosDTO) {
+                                
+                                alimentoValido = n;
+                                break;
+                            }
+                        }
+                    
+                        if (alimentoValido == null) {
+                            System.out.println("✗ No hay alimento Nectarívoro válido");
+                            return;
+                        }
+                    
+                        for (amHormigaDTO hDTO : hormigasDTO) {
                         
-                            // Solo Nectarívoros
-                            if (!"Nectarivoro".equalsIgnoreCase(aDTO.getNombre())
-                             && !"Nectarívoro".equalsIgnoreCase(aDTO.getNombre())) {
+                            if (hDTO.getIdHormigaTipo() != 1) {
                                 continue;
                             }
                         
-                            // Mapear DTO → Entity
-                            amAlimento alimento = new amNectarivoro();
-                            alimento.data = aDTO;
-                        
-                            // Inyectar genoma usando TU lógica existente
-                            genetista.amPreparar(alimento, null);
-                        
-                            // Persistir cambios
-                            alimentoDAO.update(alimento.data);
-                        
-                            System.out.println("✓ Genoma inyectado en alimento ");
+                            amHLarva larva = new amHLarva();
+                            larva.data = hDTO;
+                            
+                            genetista.amPreparar(alimentoValido, new amX("X"));
+                            genetista.alimentarAnt(larva, alimentoValido);
+                            System.out.println(larva.data.getNombre() + " alimentada");
                         }
+                    
+                        System.out.println("✓ Hormigas alimentadas con genotipo");
                     
                     } catch (Exception e) {
                         System.err.println("Error al inyectar genoma");
+                        e.printStackTrace();
                     }
 
                 }

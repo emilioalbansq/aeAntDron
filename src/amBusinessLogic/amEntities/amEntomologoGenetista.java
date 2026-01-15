@@ -8,7 +8,7 @@ import java.util.List;
 
 import amBusinessLogic.amInterfaces.IamEntomologo;
 import amBusinessLogic.amInterfaces.IamIngestaNativa;
-import amDataAccess.amDAOs.amAlimentoTipoDAO;
+import amDataAccess.amDAOs.amAlimentoDAO;
 import amDataAccess.amDAOs.amHormigaDAO;
 import amInfrastructure.AppConfig;
 import amInfrastructure.AppException;
@@ -24,15 +24,15 @@ public class amEntomologoGenetista implements IamEntomologo,  IamIngestaNativa{
             switch (random) {
                 case 1:
                     System.out.println("[Preparado]-<" + alimento.getClass().getSimpleName() + " + " + genoAlimento.getClass().getSimpleName() + ">-");
-                    alimento.data.setAmgenoAlimento(new amX("X"));
+                    alimento.genoma = new amX("X");
                     break;
                 case 2:
                     System.out.println("[Preparado]-<" + alimento.getClass().getSimpleName() + " + " + genoAlimento.getClass().getSimpleName() + ">-");
-                    alimento.data.setAmgenoAlimento(new amXX("XX"));
+                    alimento.genoma = new amXX("XX");
                     break;
                 case 3:
                     System.out.println("[Preparado]-<" + alimento.getClass().getSimpleName() + " + " + genoAlimento.getClass().getSimpleName() + ">-");
-                    alimento.data.setAmgenoAlimento(new amXY("XY"));
+                    alimento.genoma = new amXY("XY");
                     break;
                 default:
                     break;
@@ -51,14 +51,14 @@ public class amEntomologoGenetista implements IamEntomologo,  IamIngestaNativa{
 
         try {
             List<String> lineas = Files.readAllLines(Paths.get(AppConfig.ANT_NEST_PATH));
-
+            int i = 0;
             for (String linea : lineas) {
 
                 // delimitador REAL: coma
                 String[] tokens = linea.split(",");
 
                 for (String t : tokens) {
-
+                    i++;
                     String dato = t.trim();
 
                     if (dato.isEmpty()) continue;
@@ -71,6 +71,11 @@ public class amEntomologoGenetista implements IamEntomologo,  IamIngestaNativa{
                         System.out.println(CMDColor.BLUE +"   HLarva" + CMDColor.RESET);
 
                         amHormiga h = new amHLarva();
+
+                        h.data.setNombre("HLarva-" + i);
+                        h.data.setIdHormigaTipo(1);
+                        h.data.setIdSexo(4);
+                        h.data.setIdEstado(1);
 
                         resultado.add(h);
 
@@ -125,7 +130,7 @@ public class amEntomologoGenetista implements IamEntomologo,  IamIngestaNativa{
 
                         resultado.add(n);
 
-                        amAlimentoTipoDAO alimentoTipoDAO = new amAlimentoTipoDAO();
+                        amAlimentoDAO alimentoTipoDAO = new amAlimentoDAO();
                         alimentoTipoDAO.create(n.data);
 
                         resultado.add(new amNectarivoro());
@@ -153,19 +158,27 @@ public class amEntomologoGenetista implements IamEntomologo,  IamIngestaNativa{
     @Override
     public amHormiga alimentarAnt(amHormiga ant, amAlimento food) throws InterruptedException, AppException {
         
-        amPreparar(food, null);
+        
         if (food instanceof amNectarivoro){
             System.out.println("Entomologo está alimentando la hormiga...");
             food.data.setEstado("x");
-            amAlimentoTipoDAO amAlimentoTipoDAO = new amAlimentoTipoDAO();
-            amAlimentoTipoDAO.update(food.data);
+            amAlimentoDAO amAlimentoDAO = new amAlimentoDAO();
+            amAlimentoDAO.update(food.data);
 
-            if (food.data.getAmgenoAlimento() instanceof amX)
+            if (food.genoma instanceof amX){
                 ant.data.setIdSexo(3);
-            else if (food.data.getAmgenoAlimento() instanceof amXX)
-                ant.data.setIdSexo(1);
-            else if (food.data.getAmgenoAlimento() instanceof amXY)
+                System.out.println(ant.data.getNombre() + " : pasa a ser Asexual");
+            } else if (food.genoma instanceof amXX){
                 ant.data.setIdSexo(2);
+                System.out.println(ant.data.getNombre() + " : aun con su mismo Sexo");
+            } 
+            else if (food.genoma instanceof amXY){
+                ant.data.setIdSexo(1);
+                System.out.println(ant.data.getNombre() + " : aun con su mismo Sexo");
+            }
+
+            ant.data.setIdHormigaTipo(4);
+            System.out.println(ant.data.getNombre() + " : HLarva -> HReina");
 
             amHormigaDAO amHormigaDAO = new amHormigaDAO();
             amHormigaDAO.update(ant.data);

@@ -7,7 +7,7 @@ import amDataAccess.amDTOs.amHormigaDTO;
 public abstract class amHormiga {
     protected FactoryBL<amHormigaDTO> factory = new FactoryBL<>(amHormigaDAO.class);
     public amHormigaDTO data = new amHormigaDTO();
-
+    protected boolean SuperHabilidad = false;
     
 
     // protected HormigaDAO hormigaDAO;

@@ -5,7 +5,8 @@ DROP TABLE IF EXISTS amHormiga;
 DROP TABLE IF EXISTS amSexo;
 DROP TABLE IF EXISTS amEstado;
 DROP TABLE IF EXISTS amHormigaTipo;
-DROP TABLE IF EXISTS amAlimentoTipo; 
+DROP TABLE IF EXISTS amAlimento;
+DROP TABLE IF EXISTS amAlimentoTipo;
  
 CREATE TABLE amAlimentoTipo(
      IdamAlimentoTipo INTEGER PRIMARY KEY AUTOINCREMENT
@@ -15,6 +16,17 @@ CREATE TABLE amAlimentoTipo(
     ,amFechaCreacion  DATETIME NOT NULL  DEFAULT (datetime('now','localtime'))
     ,amFechaModifica  DATETIME NOT NULL  DEFAULT (datetime('now','localtime'))
 );
+
+CREATE TABLE amAlimento(
+     IdamAlimento      INTEGER PRIMARY KEY AUTOINCREMENT
+    ,IdamAlimentoTipo  INTEGER REFERENCES AlimentoTipo (IdamAlimentoTipo)
+    ,amNombre         VARCHAR(20) NOT NULL UNIQUE
+    ,amDescripcion    VARCHAR(100) NULL
+    ,amEstado         VARCHAR(1)  NOT NULL DEFAULT 'A'
+    ,amFechaCreacion  DATETIME NOT NULL  DEFAULT (datetime('now','localtime'))
+    ,amFechaModifica  DATETIME NOT NULL  DEFAULT (datetime('now','localtime'))
+);
+
 CREATE TABLE amHormigaTipo (
      IdamHormigaTipo  INTEGER PRIMARY KEY AUTOINCREMENT
     ,amNombre         VARCHAR(15)  NOT NULL UNIQUE
@@ -41,10 +53,10 @@ CREATE TABLE amSexo (
 );
 CREATE TABLE amHormiga (
      IdamHormiga      INTEGER PRIMARY KEY AUTOINCREMENT
-    ,IdamHormigaTipo  INTEGER NOT NULL REFERENCES HormigaTipo (IdamHormigaTipo)
+    ,IdamHormigaTipo  INTEGER REFERENCES HormigaTipo (IdamHormigaTipo)
     ,IdamSexo         INTEGER NOT NULL REFERENCES Sexo        (IdamSexo)
     ,IdamEstado       INTEGER NOT NULL REFERENCES Estado      (IdamEstado)
-    ,amNombre         VARCHAR(20) NOT NULL  UNIQUE
+    ,amNombre         VARCHAR(20) NOT NULL UNIQUE
     ,amDescripcion    VARCHAR(20) NULL
 
     ,amEstado         VARCHAR(1)  NOT NULL DEFAULT 'A'
@@ -64,14 +76,19 @@ INSERT INTO amSexo
  (amNombre, amDescripcion)  VALUES 
  ('Macho'  ,' masculino')
 ,('Hembra' ,' femenina') 
-,('Asexual',' Asexual');
+,('Asexual',' Asexual')
+,('Sin definir',' sin definir');
 
 INSERT INTO amAlimentoTipo
  (amNombre, amDescripcion)  VALUES
  ('Carnivoro'   ,'Azucar')
 ,('Herbívoro' ,'Proteina')
 ,('Omnívoro'  ,'Lipidico')
-,('Nectarivoro','Vitaminico');
+,('Nectarívoro','Vitaminico');
+
+INSERT INTO amAlimento
+ (IdamAlimentoTipo, amNombre, amDescripcion)  VALUES 
+ (1,'Azucar'    ,'Alimento dulce preferido por las hormigas');
 
 INSERT INTO amHormigaTipo
  (amNombre, amDescripcion)  VALUES 
@@ -105,6 +122,7 @@ select * from amSexo;
 select * from amHormigaTipo;
 select * from amEstado;
 select * from amAlimentoTipo;
+select * from amAlimento;
 SELECT * FROM amHormiga;
 
 
@@ -139,15 +157,3 @@ SELECT IdamHormiga
 ,amFechaCreacion
 ,amFechaModifica  
 FROM amVwHormiga;
-
-SELECT * FROM amHormiga;
-UPDATE amEstado   SET amNombre = 'VIVA'
-WHERE IdamEstado = 1;
-
-UPDATE amEstado   SET amNombre = 'MUERTA'
-WHERE IdamEstado = 2;
-
-UPDATE amEstado   SET amEstado = 'X'
-WHERE IdamEstado = 3;
-
-select * from amEstado;
